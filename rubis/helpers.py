@@ -43,10 +43,13 @@ def assign_method(method_choice, model_choice, radial_method, spheroidal_method)
             else : 
                 method_choice = 'radial'
         else : 
-            # Reading the file 
-            radial_coordinate, *_ = np.genfromtxt(
-                './Models/'+model_choice, skip_header=2, unpack=True
-            )
+            if isinstance(model_choice, str) :
+                # Reading the file 
+                radial_coordinate, *_ = np.genfromtxt(
+                    './Models/'+model_choice, skip_header=2, unpack=True
+                )
+            elif isinstance(model_choice, tuple) :
+                surface_pressure, radial_res, r1D, rho1D, *additional_var = model_choice
             if find_domains(radial_coordinate).Nd > 1 :            
                 method_choice = 'spheroidal'
             else : 
