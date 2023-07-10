@@ -48,12 +48,13 @@ def assign_method(method_choice, model_choice, radial_method, spheroidal_method)
                 radial_coordinate, *_ = np.genfromtxt(
                     './Models/'+model_choice, skip_header=2, unpack=True
                 )
+                if find_domains(radial_coordinate).Nd > 1 :            
+                    method_choice = 'spheroidal'
+                else : 
+                    method_choice = 'radial'
             elif isinstance(model_choice, tuple) :
-                surface_pressure, radial_res, r1D, rho1D, *additional_var = model_choice
-            if find_domains(radial_coordinate).Nd > 1 :            
-                method_choice = 'spheroidal'
-            else : 
                 method_choice = 'radial'
+            
                 
     # Assigning the adaquate method to method_choice
     if method_choice == 'radial' : 
