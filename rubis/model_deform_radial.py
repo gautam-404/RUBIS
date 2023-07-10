@@ -73,14 +73,17 @@ def init_1D(model_choice) :
         P0  = model.p[-1] / (G * mass**2 / radius**4)
         additional_var = []
         
-    else : 
-        # Reading file 
-        surface_pressure, radial_res = np.genfromtxt(
-            './Models/'+model_choice, max_rows=2, unpack=True
-        )
-        r1D, rho1D, *additional_var = np.genfromtxt(
-            './Models/'+model_choice, skip_header=2, unpack=True
-        )
+    else: 
+        if isinstance(model_choice, str) : 
+            # Reading file 
+            surface_pressure, radial_res = np.genfromtxt(
+                './Models/'+model_choice, max_rows=2, unpack=True
+            )
+            r1D, rho1D, *additional_var = np.genfromtxt(
+                './Models/'+model_choice, skip_header=2, unpack=True
+            )
+        elif isinstance(model_choice, tuple) :
+            surface_pressure, radial_res, r1D, rho1D, *additional_var = model_choice
         _, idx = np.unique(r1D, return_index=True) 
         N = len(idx)
         
