@@ -1,10 +1,10 @@
 import numpy as np
 
-from src.helpers                 import DotDict, give_me_a_name, assign_method
-from src.plot                    import get_cmap_from_proplot
-from src.rotation_profiles       import *
-from src.model_deform_radial     import radial_method
-from src.model_deform_spheroidal import spheroidal_method
+from rubis.helpers                 import DotDict, give_me_a_name, assign_method
+from rubis.plot                    import get_cmap_from_proplot
+from rubis.rotation_profiles       import *
+from rubis.model_deform_radial     import radial_method
+from rubis.model_deform_spheroidal import spheroidal_method
 
 def set_params() : 
     """
