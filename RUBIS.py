@@ -1,10 +1,10 @@
 import numpy as np
 
-from helpers                 import DotDict, give_me_a_name, assign_method
-from plot                    import get_cmap_from_proplot
-from rotation_profiles       import *
-from model_deform_radial     import radial_method
-from model_deform_spheroidal import spheroidal_method
+from src.helpers                 import DotDict, give_me_a_name, assign_method
+from src.plot                    import get_cmap_from_proplot
+from src.rotation_profiles       import *
+from src.model_deform_radial     import radial_method
+from src.model_deform_spheroidal import spheroidal_method
 
 def set_params() : 
     """
@@ -181,11 +181,11 @@ def set_params() :
     
     #### MODEL CHOICE ####
     model_choice = DotDict(indices = 3.0, target_pressures = -np.inf)
-    # model_choice = DotDict(
-    #     indices = (2.0, 1.0, 3.0, 1.5, 2.0, 4.0), 
-    #     target_pressures = (-1.0, -2.0, -3.0, -5.0, -7.0, -np.inf), 
-    #     density_jumps = (0.3, 0.2, 2.0, 0.5, 0.2)
-    # )
+    # # model_choice = DotDict(
+    # #     indices = (2.0, 1.0, 3.0, 1.5, 2.0, 4.0), 
+    # #     target_pressures = (-1.0, -2.0, -3.0, -5.0, -7.0, -np.inf), 
+    # #     density_jumps = (0.3, 0.2, 2.0, 0.5, 0.2)
+    # # )
     # model_choice = 'Jupiter.txt'
 
     #### ROTATION PARAMETERS ####      

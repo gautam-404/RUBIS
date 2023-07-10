@@ -6,8 +6,8 @@ from matplotlib             import rc, ticker
 from matplotlib.collections import LineCollection
 from pylab                  import cm
 
-from helpers                import find_domains
-from legendre               import pl_eval_2D, pl_project_2D
+from .helpers                import find_domains
+from .legendre               import pl_eval_2D, pl_project_2D
 
 def phi_g_harmonics(zeta, phi_g_l, cmap=cm.viridis, radial=True) : 
     """
@@ -489,4 +489,5 @@ def plot_f_map(
     plt.ylabel('$z/R_\mathrm{eq}$', fontsize=size+3)
     plt.xlim((-1.0, 1.0))
     fig.tight_layout()
-    plt.show()
+    plt.savefig("output.png", dpi=300, facecolor='white', edgecolor='none', transparent=False)
+    # plt.show()

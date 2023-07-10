@@ -6,16 +6,16 @@ from scipy.linalg.lapack import dgbtrf, dgbtrs
 from scipy.special       import roots_legendre, eval_legendre
 from scipy.integrate     import solve_ivp
 
-from legendre            import find_r_eq, find_r_pol, pl_eval_2D, pl_project_2D
-from numerical           import integrate, integrate2D, interpolate_func, lagrange_matrix_P
-from polytrope           import composite_polytrope
-from helpers             import (
+from .legendre            import find_r_eq, find_r_pol, pl_eval_2D, pl_project_2D
+from .numerical           import integrate, integrate2D, interpolate_func, lagrange_matrix_P
+from .polytrope           import composite_polytrope
+from .helpers             import (
     init_2D,
     init_phi_c,
     valid_reciprocal_domain, 
     write_model
 )
-from plot                import (
+from .plot                import (
     plot_flux_lines,
     plot_3D_surface,
     plot_f_map, 
@@ -677,7 +677,7 @@ def radial_method(*params) :
 #                   Radiative flux computation                   #
 #----------------------------------------------------------------#
 
-from helpers import DotDict
+from .helpers import DotDict
 
 def find_metric_terms(map_n, t, z0=0.0, z1=1.0) : 
     """
