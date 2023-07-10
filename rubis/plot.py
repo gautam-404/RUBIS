@@ -489,5 +489,6 @@ def plot_f_map(
     plt.ylabel('$z/R_\mathrm{eq}$', fontsize=size+3)
     plt.xlim((-1.0, 1.0))
     fig.tight_layout()
-    plt.savefig("output.png", dpi=300, facecolor='white', edgecolor='none', transparent=False)
+    
+    # plt.savefig("output.png", dpi=300, facecolor='white', edgecolor='none', transparent=False)
     # plt.show()
