@@ -546,6 +546,7 @@ def radial_method(*params) :
     map_n, cth = init_2D(r, M)
     np.save("map_n_initial", map_n)
     np.save("cth_initial", cth)
+    np.sace("zeta_initial", zeta)
     
     # Centrifugal potential and profile definition
     eval_phi_c, eval_w = init_phi_c(rotation_profile, central_diff_rate, rotation_scale)
@@ -677,6 +678,7 @@ def radial_method(*params) :
         )
     np.save("map_n_final", map_n)
     np.save("cth_final", cth)
+    np.save("zeta_final", zeta)
     # return zeta, r, map_n, rho, phi_g_l, dphi_g_l, eval_w, phi_eff, dphi_eff, P
     
     
