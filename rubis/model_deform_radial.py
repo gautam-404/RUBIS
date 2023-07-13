@@ -544,6 +544,7 @@ def radial_method(*params) :
     
     # Angular domain initialisation
     map_n, cth = init_2D(r, M)
+    print(np.arccos(cth))
     
     # Centrifugal potential and profile definition
     eval_phi_c, eval_w = init_phi_c(rotation_profile, central_diff_rate, rotation_scale)
