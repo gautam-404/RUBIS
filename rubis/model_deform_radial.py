@@ -544,9 +544,9 @@ def radial_method(*params) :
     
     # Angular domain initialisation
     map_n, cth = init_2D(r, M)
-    np.save("map_n_initial", map_n)
-    np.save("cth_initial", cth)
-    np.save("zeta_initial", zeta)
+    # np.save("map_n_initial", map_n)
+    # np.save("cth_initial", cth)
+    # np.save("zeta_initial", zeta)
     
     # Centrifugal potential and profile definition
     eval_phi_c, eval_w = init_phi_c(rotation_profile, central_diff_rate, rotation_scale)
@@ -661,14 +661,14 @@ def radial_method(*params) :
         find_gravitational_moments(map_n, cth, rho)
     
     # Model writing
+    rota = eval_w(map_n[:, (M-1)//2], 0.0, rotation_target)
+    if output_params.dim_model : 
+        map_n    *=               radius
+        rho      *=     mass    / radius**3
+        phi_eff  *= G * mass    / radius   
+        dphi_eff *= G * mass    / radius**2
+        P        *= G * mass**2 / radius**4
     if output_params.save_model :
-        rota = eval_w(map_n[:, (M-1)//2], 0.0, rotation_target)
-        if output_params.dim_model : 
-            map_n    *=               radius
-            rho      *=     mass    / radius**3
-            phi_eff  *= G * mass    / radius   
-            dphi_eff *= G * mass    / radius**2
-            P        *= G * mass**2 / radius**4
         write_model(
             output_params.save_name,
             (N, M, mass, radius, rotation_target, G),
@@ -676,10 +676,10 @@ def radial_method(*params) :
             additional_var,
             zeta, P, rho, phi_eff, rota
         )
-    np.save("map_n_final", map_n)
-    np.save("cth_final", cth)
-    np.save("zeta_final", zeta)
-    # return zeta, r, map_n, rho, phi_g_l, dphi_g_l, eval_w, phi_eff, dphi_eff, P
+    # np.save("map_n_final", map_n)
+    # np.save("cth_final", cth)
+    # np.save("zeta_final", zeta)
+    return (N, M, mass, radius, rotation_target, G, map_n, additional_var, zeta, P, rho, phi_eff, rota)
     
     
 #----------------------------------------------------------------#
