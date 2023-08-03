@@ -287,7 +287,6 @@ def write_model(fname, params, map_n, additional_var, *args) :
 
     """
     header = "".join(str(c)+" " for c in params)[:-1]
-    np.savetxt(
-        'Models/'+fname, np.hstack((map_n, np.vstack(args + (*additional_var,)).T)), 
+    np.savetxt(fname, np.hstack((map_n, np.vstack(args + (*additional_var,)).T)), 
         header=header,  comments=''
     )
