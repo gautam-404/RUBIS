@@ -548,9 +548,6 @@ def radial_method(*params) :
     
     # Angular domain initialisation
     map_n, cth = init_2D(r, M)
-    # np.save("map_n_initial", map_n)
-    # np.save("cth_initial", cth)
-    # np.save("zeta_initial", zeta)
     
     # Centrifugal potential and profile definition
     eval_phi_c, eval_w = init_phi_c(rotation_profile, central_diff_rate, rotation_scale)
@@ -680,9 +677,6 @@ def radial_method(*params) :
             additional_var,
             zeta, P, rho, phi_eff, rota
         )
-    # np.save("map_n_final", map_n)
-    # np.save("cth_final", cth)
-    # np.save("zeta_final", zeta)
     return (N, M, mass, radius, rotation_target, G, map_n, additional_var, zeta, P, rho, phi_eff, rota)
     
     
