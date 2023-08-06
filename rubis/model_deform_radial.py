@@ -529,7 +529,11 @@ def radial_method(*params) :
     ----------
     params : tuple
         All method parameters. Please refer to the documentation in RUBIS.py
-
+    
+    Returns
+    -------
+    rubis_params : tuple
+        All method parameters. (N, M, mass, radius, rotation_target, G, map_n, additional_var, zeta, P, rho, phi_eff, rota)
     """
     
     # Global parameters, constants, variables and functions
