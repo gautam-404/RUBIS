@@ -529,7 +529,11 @@ def radial_method(*params) :
     ----------
     params : tuple
         All method parameters. Please refer to the documentation in RUBIS.py
-
+    
+    Returns
+    -------
+    rubis_params : tuple
+        All method parameters. (N, M, mass, radius, rotation_target, G, map_n, additional_var, zeta, P, rho, phi_eff, rota)
     """
     
     # Global parameters, constants, variables and functions
@@ -661,14 +665,14 @@ def radial_method(*params) :
         find_gravitational_moments(map_n, cth, rho)
     
     # Model writing
+    rota = eval_w(map_n[:, (M-1)//2], 0.0, rotation_target)
+    if output_params.dim_model : 
+        map_n    *=               radius
+        rho      *=     mass    / radius**3
+        phi_eff  *= G * mass    / radius   
+        dphi_eff *= G * mass    / radius**2
+        P        *= G * mass**2 / radius**4
     if output_params.save_model :
-        rota = eval_w(map_n[:, (M-1)//2], 0.0, rotation_target)
-        if output_params.dim_model : 
-            map_n    *=               radius
-            rho      *=     mass    / radius**3
-            phi_eff  *= G * mass    / radius   
-            dphi_eff *= G * mass    / radius**2
-            P        *= G * mass**2 / radius**4
         write_model(
             output_params.save_name,
             (N, M, mass, radius, rotation_target, G),
