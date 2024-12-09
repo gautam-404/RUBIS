@@ -79,9 +79,10 @@ class RUBISmod:
         outheader = pd.read_csv(outfile, sep=' ', nrows=1, header=None, names=['N', 'res','M', 'R', 'Omega_eq', 'G'])
         r_zeta_theta = np.arange(0, angular_resolution)
         outdf = pd.read_csv(outfile, sep=' ', skiprows=1, names=[f'r_{i}' for i in r_zeta_theta]+['zeta', 'P', 'rho', 'phi_eff', 'Omega'])
-        outdf = pd.concat([outdf, df.Gamma_1], axis=1)
+        outdf = pd.concat([outdf, df.Gamma_1, df.N2], axis=1)
         outheader.to_csv(outfile, sep=' ', index=False, header=None)
         outdf.to_csv(outfile, sep=' ', index=False, float_format='%.18e', mode='a', header=None)
+        return outheader, outdf
 
     
     def rubis_model(self, profile, angular_resolution, **kwargs):
@@ -293,8 +294,8 @@ class RUBISmod:
         names = cols+other_cols+list(dfx.columns)
         names = [name+' '*(15-len(name)) for name in names]
         df = pd.concat([df, dfx], axis=1, names=names)
-        self.write_rubis_profile(df, header, profile, angular_resolution)
-        return df, header
+        outheader, outdf = self.write_rubis_profile(df, header, profile, angular_resolution)
+        return outdf, outheader
 
     def create_rubis_profiles(self, angular_resolution=181, n_processes=None, **kwargs):
         os.environ['HDF5_USE_FILE_LOCKING'] = 'False'
